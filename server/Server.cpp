@@ -27,8 +27,7 @@ int main(){
         SOCKET clientSock = accept(serSock, (SOCKADDR*)&clientAddr, &nSize);
         int strLen = recv(clientSock, buffer, BUF_SIZE, 0);
 
-        char *string = "Hello World!";
-        send(clientSock, string, strlen(string)+sizeof(char), NULL);
+        send(clientSock, buffer, strLen, NULL);
 
         closesocket(clientSock);
         memset(buffer, 0, BUF_SIZE);
